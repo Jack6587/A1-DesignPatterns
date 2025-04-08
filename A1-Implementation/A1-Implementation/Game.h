@@ -24,6 +24,8 @@ public:
 	void switchPlayer();
 	void gameOver();
 
+	void getCard(); // for getting a card from the deck, TBD
+
 private:
 	CardCollection deck; // stores all cards in the main deck
 	int currentRound;
