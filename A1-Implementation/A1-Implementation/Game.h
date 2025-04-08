@@ -23,4 +23,14 @@ public:
 	void outputScores();
 	void switchPlayer();
 	void gameOver();
+
+private:
+	CardCollection deck; // stores all cards in the main deck
+	int currentRound;
+	int currentTurn;
+	Player* currentPlayer;
+	Player* player1;
+	Player* player2; // using pointers for players for easy rotation
+	static Game* instance;
+
 };
