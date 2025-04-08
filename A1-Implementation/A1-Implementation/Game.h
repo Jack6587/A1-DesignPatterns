@@ -15,7 +15,7 @@ public:
 	void endGame();
 
 	void createDeck();
-	void shuffleDeck(CardCollection cards);
+	void shuffleDeck(CardCollection& cards);
 	void initialisePlayers();
 
 	void drawCard();
