@@ -13,8 +13,7 @@ public:
 	void playCard(Card* card, CardCollection* deck); // moves card to play area, removes it from the current provided deck
 	
 	void isBust();
-	void accessBank();
-	void displayBank();
+	void printCards(const CardCollection& cards, const std::string& cardArea);
 
 private:
 	std::string _name;

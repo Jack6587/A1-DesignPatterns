@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <iostream>
 
 Player::Player() {
 	std::string names[] = { "Sam", "Billy", "Jen", "Bob", "Sally",
@@ -23,10 +24,10 @@ void Player::isBust() {
 
 }
 
-void Player::accessBank() {
+void Player::printCards(const CardCollection& cards, const std::string& cardArea){
+	std::cout << cardArea << ":\n"; // output the area name, such as "Deck"
 
-}
-
-void Player::displayBank() {
-
-}
+	for (Card* card : cards) {
+		std::cout << card->str() << std::endl; // outputs each card from the collection
+	}
+} 
