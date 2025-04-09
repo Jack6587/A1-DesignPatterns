@@ -7,7 +7,6 @@
 class Player {
 public:
 	Player();
-	~Player();
 
 	void pickUpCard();
 	void moveToBank(Card* card); // card is a pointer - because it's always changing (unlike a reference)
