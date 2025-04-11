@@ -1,6 +1,6 @@
 #include <string>
+#include "CardCollection.h"
 #include "Card.h"
-#include "Game.h"
 
 class Player {
 public:

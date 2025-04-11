@@ -1,8 +1,5 @@
-#include <vector>
+#include "CardCollection.h"
 #include "Card.h"
-#include "Player.h"
-
-typedef std::vector<Card*> CardCollection;
 
 class Game {
 public:
