@@ -20,7 +20,7 @@ public:
 
 	virtual void willAddToBank(Game&, Player& player) const = 0;
 private:
-	int value;
-	CardType cardType;
-	std::string ability;
+	int _value;
+	CardType _cardType;
+	std::string _ability;
 };

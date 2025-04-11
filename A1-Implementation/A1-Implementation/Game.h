@@ -22,7 +22,7 @@ public:
 	void getCard(); // for getting a card from the deck, TBD
 
 private:
-	CardCollection deck; // stores all cards in the main deck
+	CardCollection _deck; // stores all cards in the main deck
 	int currentRound;
 	int currentTurn;
 	Player* currentPlayer;

@@ -1,6 +1,8 @@
 #include <string>
 #include "CardCollection.h"
 #include "Card.h"
+#include "Bank.h"
+#include "PlayArea.h"
 
 class Player {
 public:
@@ -16,6 +18,6 @@ public:
 private:
 	std::string _name;
 	int _totalScore;
-	CardCollection _playArea;
-	CardCollection _bank;
+	PlayArea _playArea;
+	Bank _bank;
 };
