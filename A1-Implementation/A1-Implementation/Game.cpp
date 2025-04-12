@@ -64,3 +64,7 @@ void Game::switchPlayer() {
 void Game::gameOver() {
 
 }
+
+Game* Game::getInstance() {
+
+}

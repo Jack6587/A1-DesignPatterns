@@ -15,12 +15,11 @@ public:
 	virtual void play(Game& game, Player& player) const = 0;
 
 	virtual CardType type() const = 0;
-
 	virtual std::string str() const = 0;
-
 	virtual void willAddToBank(Game&, Player& player) const = 0;
+
 private:
-	int _value;
-	CardType _cardType;
-	std::string _ability;
+	int value;
+	CardType cardType;
+	std::string ability;
 };
