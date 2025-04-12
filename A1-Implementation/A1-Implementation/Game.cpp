@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <iostream>
 
 Game* Game::instance = nullptr; // static pointer to the instance of the Game class, ensuring only one instance is created and 
 
@@ -19,11 +20,33 @@ Game::~Game() {
 }
 
 void Game::startGame() {
+	createDeck(); // set up deck for first time
+	shuffleDeck();
+	initialisePlayers(); // initialise new players
+	std::cout << "Starting Dead Man's Draw++!" << std::endl;
 
+	playRound(); // starts the first round
 }
 
 void Game::endGame() {
 
+	outputScores();
+}
+
+void Game::playRound() {
+	std::cout << "--- Round " << currentRound << ", Turn " << currentTurn << " ---" << std::endl;
+	drawCard();
+
+	while (!currentPlayer->isBust()) {
+		if (!promptPlayerToDraw()) {
+			break;
+		}
+		else {
+			drawCard();
+		}
+	}
+
+	switchPlayer();
 }
 
 void Game::createDeck() {
@@ -37,18 +60,27 @@ void Game::shuffleDeck(CardCollection& cards) {
 void Game::initialisePlayers() {
 	player1 = new Player();
 	player2 = new Player();
+
+	currentPlayer = player1;
 }
 
 void Game::drawCard() {
 
 }
 
-void Game::promptPlayerToDraw() {
+bool Game::promptPlayerToDraw() {
+	std::string input;
+	std::cout << "Draw again? (y/n): ";
+	std::cin >> input;
 
+	return input == "y" || input == "Y";
 }
 
 void Game::outputScores() {
+	// player1->printCards();
+	std::cout << "Score: " << std::endl;
 
+	// player2->printCards();
 }
 
 void Game::switchPlayer() {

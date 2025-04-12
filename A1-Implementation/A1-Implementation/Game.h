@@ -14,8 +14,10 @@ public:
 	void shuffleDeck(CardCollection& cards);
 	void initialisePlayers();
 
+	void playRound();
+
 	void drawCard(); // for getting a card from the deck
-	void promptPlayerToDraw();
+	bool promptPlayerToDraw();
 	void outputScores();
 	void switchPlayer();
 	void gameOver();

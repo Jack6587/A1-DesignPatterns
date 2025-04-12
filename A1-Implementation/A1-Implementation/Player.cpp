@@ -20,7 +20,7 @@ void Player::playCard(Card* card, CardCollection* deck) {
 
 }
 
-void Player::isBust() {
+bool Player::isBust() {
 
 }
 
