@@ -31,6 +31,7 @@ void Game::startGame() {
 void Game::endGame() {
 
 	outputScores();
+	// if(player1.totalScore > player2.totalScore){return player1 wins!
 }
 
 void Game::playRound() {

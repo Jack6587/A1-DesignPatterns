@@ -6,3 +6,7 @@ void Bank::toString() {
 		std::cout << card << std::endl;
 	}
 }
+
+void Bank::addCard() {
+
+}

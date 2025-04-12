@@ -4,6 +4,8 @@
 class Bank {
 public:
 	void toString();
+	void addCard();
+
 private:
 	CardCollection cards;
 };

@@ -1,4 +1,4 @@
-#include "CardCollection.h"
+#include "Deck.h"
 #include "Card.h"
 #include "Player.h"
 
@@ -26,7 +26,7 @@ public:
 	// before game is instantiated (and is used to instantiate the game in the first place)
 
 private:
-	CardCollection _deck; // stores all cards in the main deck
+	Deck _deck; // stores all cards in the main deck
 	int currentRound;
 	int currentTurn;
 	Player* currentPlayer;

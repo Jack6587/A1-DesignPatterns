@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Deck.h"
 #include <iostream>
 
 Player::Player() {
@@ -8,8 +9,9 @@ Player::Player() {
 	_totalScore = 0; // score starts at 0
 }
 
-void Player::pickUpCard() {
-
+void Player::pickUpCard(Deck& deck) {
+	Card* card = deck.drawCard();
+	deck.drawCard();
 }
 
 void Player::moveToBank(Card* card) {
@@ -22,6 +24,14 @@ void Player::playCard(Card* card, CardCollection* deck) {
 
 bool Player::isBust() {
 
+}
+
+std::string Player::getName() const {
+	return _name;
+}
+
+int Player::getTotalScore() const {
+	return _totalScore;
 }
 
 void Player::printCards(const CardCollection& cards, const std::string& cardArea){
