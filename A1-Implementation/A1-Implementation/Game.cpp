@@ -11,7 +11,11 @@ Game::Game() {
 }
 
 Game::~Game() {
-
+	delete player1;
+	delete player2;
+	instance = nullptr; // instance needs to be set to nullptr -
+	// if a new game is started, it will still point to the old 
+	// address and then a new instance cannot be made
 }
 
 void Game::startGame() {
@@ -31,7 +35,8 @@ void Game::shuffleDeck(CardCollection& cards) {
 }
 
 void Game::initialisePlayers() {
-
+	player1 = new Player();
+	player2 = new Player();
 }
 
 void Game::drawCard() {
@@ -66,5 +71,8 @@ void Game::gameOver() {
 }
 
 Game* Game::getInstance() {
-
+	if (instance == nullptr) { // if pointer (instance) hasn't been initialised
+		instance = new Game(); // creates an instance
+	}
+	return instance;
 }

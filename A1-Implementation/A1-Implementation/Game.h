@@ -20,7 +20,8 @@ public:
 	void switchPlayer();
 	void gameOver();
 
-	static Game* getInstance();
+	static Game* getInstance(); // static so we can access this 
+	// before game is instantiated (and is used to instantiate the game in the first place)
 
 private:
 	CardCollection _deck; // stores all cards in the main deck
@@ -29,6 +30,6 @@ private:
 	Player* currentPlayer;
 	Player* player1;
 	Player* player2; // using pointers for players for easy rotation
-	static Game* instance;
+	static Game* instance; // game has just one pointer to its only instance
 
 };
