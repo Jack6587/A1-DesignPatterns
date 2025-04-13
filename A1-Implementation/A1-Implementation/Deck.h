@@ -2,6 +2,9 @@
 
 class Deck {
 public:
+	Deck();
+
+	void addCard(Card* card);
 	Card* drawCard();
 	bool isEmpty();
 

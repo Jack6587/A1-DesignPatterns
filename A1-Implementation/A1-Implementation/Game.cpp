@@ -52,7 +52,7 @@ void Game::playRound() {
 }
 
 void Game::createDeck() {
-
+	_deck = new Deck();
 }
 
 void Game::shuffleDeck(CardCollection& cards) {

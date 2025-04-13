@@ -27,7 +27,7 @@ public:
 	// before game is instantiated (and is used to instantiate the game in the first place)
 
 private:
-	Deck _deck; // stores all cards in the main deck
+	Deck* _deck; // stores all cards in the main deck
 	DiscardPile _discardPile;
 	int currentRound;
 	int currentTurn;
