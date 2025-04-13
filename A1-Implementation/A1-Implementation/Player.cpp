@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Deck.h"
 #include <iostream>
+#include <set>
 
 Player::Player() {
 	std::string names[] = { "Sam", "Billy", "Jen", "Bob", "Sally",
@@ -42,7 +43,16 @@ void Player::endTurn() {
 }
 
 bool Player::isBust() {
+	std::set<Card::CardType> cardTypes;
 
+	for (Card* card : _playArea.getCards()) { // loop over play area cards
+		Card::CardType type = card->type(); // get the type of each card
+		if (cardTypes.count(type)) { // if card type already exists (using count, from set)
+			return true; // return true
+		}
+		cardTypes.insert(type); // otherwise, add to the caradTypes set for further checking
+	}
+	return false;
 }
 
 std::string Player::getName() const {
