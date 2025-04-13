@@ -6,7 +6,7 @@ bool Deck::isEmpty() {
 }
 
 Card* Deck::drawCard() {
-	Card* topCard = _cards.back();
-	_cards.pop_back();
+	Card* topCard = _cards.back(); // gets the last item from the vector
+	_cards.pop_back(); // removes last item from the vector
 	return topCard;
 }

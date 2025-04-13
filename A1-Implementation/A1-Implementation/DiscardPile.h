@@ -1,9 +1,7 @@
 #include "CardCollection.h"
-#include <string>
 
-class Bank {
+class DiscardPile {
 public:
-	void toString();
 	void addCard(Card* card);
 	void addCards(CardCollection& cardSet);
 

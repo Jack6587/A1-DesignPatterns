@@ -11,15 +11,21 @@ Player::Player() {
 
 void Player::pickUpCard(Deck& deck) {
 	Card* card = deck.drawCard();
-	deck.drawCard();
+	if (card) {
+		playCard(card); // now, when player picks up a card, it automatically plays the card (which also adds to the play area)
+	}
 }
 
 void Player::moveToBank(Card* card) {
-
+	_bank.addCard(card);
 }
 
-void Player::playCard(Card* card, CardCollection* deck) {
+void Player::playCard(Card* card) {
+	_playArea.addCard(card);
 
+	if (isBust()) {
+		
+	}
 }
 
 bool Player::isBust() {

@@ -7,6 +7,12 @@ void Bank::toString() {
 	}
 }
 
-void Bank::addCard() {
+void Bank::addCard(Card* card) {
+	cards.push_back(card); // adds item to end of the vector
+}
 
+void Bank::addCards(CardCollection& cardSet) {
+	for (Card* card : cardSet) {
+		cards.push_back(card);
+	}
 }
