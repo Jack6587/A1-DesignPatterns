@@ -10,3 +10,11 @@ void PlayArea::toString() {
 void PlayArea::addCard(Card* card) {
 	cards.push_back(card); // adds item to end of the vector
 }
+
+CardCollection& PlayArea::getCards() {
+	return cards;
+}
+
+void PlayArea::clear() {
+	cards.clear();
+}

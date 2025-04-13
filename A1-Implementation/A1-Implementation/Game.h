@@ -1,6 +1,7 @@
 #include "Deck.h"
 #include "Card.h"
 #include "Player.h"
+#include "DiscardPile.h"
 
 class Game {
 public:
@@ -11,6 +12,7 @@ public:
 	void endGame();
 
 	void createDeck();
+	void createDiscardPile();
 	void shuffleDeck(CardCollection& cards);
 	void initialisePlayers();
 
@@ -27,6 +29,7 @@ public:
 
 private:
 	Deck _deck; // stores all cards in the main deck
+	DiscardPile _discardPile;
 	int currentRound;
 	int currentTurn;
 	Player* currentPlayer;

@@ -4,6 +4,7 @@
 #include "Bank.h"
 #include "PlayArea.h"
 #include "Deck.h"
+#include "DiscardPile.h"
 
 class Player {
 public:
@@ -25,4 +26,5 @@ private:
 	int _totalScore;
 	PlayArea _playArea;
 	Bank _bank;
+	DiscardPile _discardPile;
 };

@@ -54,6 +54,10 @@ void Game::createDeck() {
 
 }
 
+void Game::createDiscardPile() {
+
+}
+
 void Game::shuffleDeck(CardCollection& cards) {
 
 }

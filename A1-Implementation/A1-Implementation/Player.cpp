@@ -24,7 +24,12 @@ void Player::playCard(Card* card) {
 	_playArea.addCard(card);
 
 	if (isBust()) {
-		
+		CardCollection& discardCards = _playArea.getCards();
+		for (Card* card : discardCards) {
+			_discardPile.addCard(card);
+		}
+
+		_playArea.clear();
 	}
 }
 
