@@ -12,14 +12,15 @@ public:
 
 	virtual ~Card() {}
 
-	virtual void play(Game& game, Player& player) const = 0;
+	virtual void play(Game& game, Player& player) = 0;
 
 	virtual CardType type() const = 0;
 	virtual std::string str() const = 0;
-	virtual void willAddToBank(Game&, Player& player) const = 0;
+	virtual void willAddToBank(Game& game, Player& player) = 0;
 
-private:
+protected:
 	int value;
+	std::string name;
 	CardType cardType;
 	std::string ability;
 };
