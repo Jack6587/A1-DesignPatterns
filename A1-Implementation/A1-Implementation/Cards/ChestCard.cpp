@@ -3,21 +3,13 @@
 #include <iostream>
 
 ChestCard::ChestCard(int cardValue) {
-	name = "Cannon";
+	name = "Chest";
 	value = cardValue;
-	cardType = Card::Cannon;
+	cardType = Card::Chest;
 }
 
 void ChestCard::play(Game& game, Player& player) {
 
-}
-
-Card::CardType ChestCard::type() const {
-	return Card::Cannon;
-}
-
-std::string ChestCard::str() const {
-	return name + "(" + std::to_string(value) + ")";
 }
 
 void ChestCard::willAddToBank(Game& game, Player& player) {

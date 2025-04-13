@@ -2,9 +2,9 @@
 #include "../Card.h"
 #include <string>
 
-class ChestCard : public Card {
+class KeyCard : public Card {
 public:
-	ChestCard(int value);
+	KeyCard(int value);
 
 	void play(Game& game, Player& player) override;
 	void willAddToBank(Game& game, Player& player) override;

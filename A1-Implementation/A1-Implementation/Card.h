@@ -14,8 +14,8 @@ public:
 
 	virtual void play(Game& game, Player& player) = 0;
 
-	virtual CardType type() const = 0;
-	virtual std::string str() const = 0;
+	virtual CardType type() const;
+	virtual std::string str() const;
 	virtual void willAddToBank(Game& game, Player& player) = 0;
 
 protected:
