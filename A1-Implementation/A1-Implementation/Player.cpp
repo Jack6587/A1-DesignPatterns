@@ -33,6 +33,14 @@ void Player::playCard(Card* card) {
 	}
 }
 
+void Player::endTurn() {
+	for (Card* card : _playArea.getCards()) {
+		_bank.addCard(card);
+	}
+
+	_playArea.clear();
+}
+
 bool Player::isBust() {
 
 }

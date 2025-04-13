@@ -40,6 +40,7 @@ void Game::playRound() {
 
 	while (!currentPlayer->isBust()) {
 		if (!promptPlayerToDraw()) {
+			currentPlayer->endTurn();
 			break;
 		}
 		else {
@@ -51,10 +52,6 @@ void Game::playRound() {
 }
 
 void Game::createDeck() {
-
-}
-
-void Game::createDiscardPile() {
 
 }
 

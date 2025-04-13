@@ -12,7 +12,6 @@ public:
 	void endGame();
 
 	void createDeck();
-	void createDiscardPile();
 	void shuffleDeck(CardCollection& cards);
 	void initialisePlayers();
 
