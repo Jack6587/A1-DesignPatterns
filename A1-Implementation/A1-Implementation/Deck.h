@@ -7,6 +7,7 @@ public:
 	void addCard(Card* card);
 	Card* drawCard();
 	bool isEmpty();
+	CardCollection& getCards();
 
 private:
 	CardCollection _cards;

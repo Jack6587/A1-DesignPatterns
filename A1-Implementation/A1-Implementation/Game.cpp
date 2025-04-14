@@ -8,7 +8,8 @@
 #include "Cards/MapCard.h"
 #include "Cards/MermaidCard.h"
 #include "Cards/KrakenCard.h"
-
+#include <algorithm>
+#include <random>
 #include <iostream>
 
 Game* Game::instance = nullptr; // static pointer to the instance of the Game class, ensuring only one instance is created and 
@@ -77,8 +78,8 @@ void Game::createDeck() {
 	}
 }
 
-void Game::shuffleDeck(CardCollection& cards) {
-
+void Game::shuffleDeck() {
+	std::shuffle(_deck->getCards().begin(), _deck->getCards().end(), std::default_random_engine{}); // shuffles elements within the range of beginning to end of the deck randomly using random number generator
 }
 
 void Game::initialisePlayers() {

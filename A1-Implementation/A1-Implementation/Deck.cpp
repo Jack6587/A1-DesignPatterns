@@ -17,3 +17,7 @@ Card* Deck::drawCard() {
 	_cards.pop_back(); // removes last item from the vector
 	return topCard;
 }
+
+CardCollection& Deck::getCards() {
+	return _cards;
+}

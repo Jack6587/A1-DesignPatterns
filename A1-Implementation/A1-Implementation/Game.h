@@ -12,7 +12,7 @@ public:
 	void endGame();
 
 	void createDeck();
-	void shuffleDeck(CardCollection& cards);
+	void shuffleDeck();
 	void initialisePlayers();
 
 	void playRound();
