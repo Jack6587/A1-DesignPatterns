@@ -1,3 +1,4 @@
+#pragma once
 #include "CardCollection.h"
 #include <string>
 

@@ -1,3 +1,4 @@
+#pragma once
 #include "Deck.h"
 #include "Card.h"
 #include "Player.h"
@@ -12,7 +13,7 @@ public:
 	void endGame();
 
 	void createDeck();
-	void shuffleDeck();
+	void shuffleDeck(); // SHUFFLE DECK NEEDS TO BE CHANGED
 	void initialisePlayers();
 
 	void playRound();
@@ -22,6 +23,7 @@ public:
 	void outputScores();
 	void switchPlayer();
 	void gameOver();
+	DiscardPile& getDiscardPile();
 
 	static Game* getInstance(); // static so we can access this 
 	// before game is instantiated (and is used to instantiate the game in the first place)

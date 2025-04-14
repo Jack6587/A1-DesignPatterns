@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Deck.h"
+#include "Game.h"
 #include <iostream>
 #include <set>
 
@@ -10,28 +11,25 @@ Player::Player() {
 	_totalScore = 0; // score starts at 0
 }
 
-void Player::pickUpCard(Deck& deck) {
-	Card* card = deck.drawCard();
-	if (card) {
-		playCard(card); // now, when player picks up a card, it automatically plays the card (which also adds to the play area)
-	}
-}
-
 void Player::moveToBank(Card* card) {
 	_bank.addCard(card);
 }
 
-void Player::playCard(Card* card) {
+bool Player::playCard(Card* card, Game& game) {
 	_playArea.addCard(card);
 
 	if (isBust()) {
 		CardCollection& discardCards = _playArea.getCards();
 		for (Card* card : discardCards) {
-			_discardPile.addCard(card);
+			game.getDiscardPile().addCard(card); // each card from the play area gets moved to the shared discard pile
 		}
 
 		_playArea.clear();
+		return true; // play area is cleared and true returned
 	}
+
+	card->play(game, *this); // otherwise, the card is played with its specific ability, using the game reference and this player
+	return false;
 }
 
 void Player::endTurn() {
@@ -55,6 +53,14 @@ bool Player::isBust() {
 	return false;
 }
 
+void Player::printCards(const CardCollection& cards, const std::string& cardArea) {
+	std::cout << cardArea << ":\n"; // output the area name, such as "Deck"
+
+	for (Card* card : cards) {
+		std::cout << card->str() << std::endl; // outputs each card from the collection
+	}
+}
+
 std::string Player::getName() const {
 	return _name;
 }
@@ -63,10 +69,10 @@ int Player::getTotalScore() const {
 	return _totalScore;
 }
 
-void Player::printCards(const CardCollection& cards, const std::string& cardArea){
-	std::cout << cardArea << ":\n"; // output the area name, such as "Deck"
+const PlayArea& Player::getPlayArea() const {
+	return _playArea;
+}
 
-	for (Card* card : cards) {
-		std::cout << card->str() << std::endl; // outputs each card from the collection
-	}
-} 
+const Bank& Player::getBank() const {
+	return _bank;
+}

@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Card.h"
 #include "Cards/CannonCard.h"
 #include "Cards/ChestCard.h"
 #include "Cards/KeyCard.h"
@@ -90,7 +91,10 @@ void Game::initialisePlayers() {
 }
 
 void Game::drawCard() {
-
+	Card* card = _deck->drawCard();
+	if (card) {
+		currentPlayer->playCard(card, *this);
+	}
 }
 
 bool Game::promptPlayerToDraw() {
@@ -125,6 +129,10 @@ void Game::switchPlayer() {
 
 void Game::gameOver() {
 
+}
+
+DiscardPile& Game::getDiscardPile() {
+	return _discardPile;
 }
 
 Game* Game::getInstance() {
