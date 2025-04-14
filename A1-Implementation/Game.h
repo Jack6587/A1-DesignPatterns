@@ -24,6 +24,7 @@ public:
 	void switchPlayer();
 	void gameOver();
 	DiscardPile& getDiscardPile();
+	Deck* getDeck();
 
 	static Game* getInstance(); // static so we can access this 
 	// before game is instantiated (and is used to instantiate the game in the first place)

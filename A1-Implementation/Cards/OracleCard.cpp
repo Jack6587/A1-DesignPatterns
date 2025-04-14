@@ -1,4 +1,6 @@
 #include "OracleCard.h"
+#include "../Deck.h"
+#include "../Game.h"
 #include <iostream>
 
 OracleCard::OracleCard(int cardValue) {
@@ -8,7 +10,9 @@ OracleCard::OracleCard(int cardValue) {
 }
 
 void OracleCard::play(Game& game, Player& player) {
-
+	Deck* deck = game.getDeck();
+	Card* topCard = deck->getCards().back();
+	std::cout << "Oracle reveals that the next card in the deck is: " << topCard << std::endl;
 }
 
 void OracleCard::willAddToBank(Game& game, Player& player) {

@@ -21,6 +21,7 @@ Game::Game() {
 	player1 = nullptr;
 	player2 = nullptr;
 	currentPlayer = nullptr;
+	_deck = nullptr;
 }
 
 Game::~Game() {
@@ -133,6 +134,10 @@ void Game::gameOver() {
 
 DiscardPile& Game::getDiscardPile() {
 	return _discardPile;
+}
+
+Deck* Game::getDeck() {
+	return _deck;
 }
 
 Game* Game::getInstance() {
