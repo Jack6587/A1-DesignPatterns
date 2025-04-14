@@ -1,5 +1,4 @@
 #include "ChestCard.h"
-#include "../Card.h"
 #include <iostream>
 
 ChestCard::ChestCard(int cardValue) {

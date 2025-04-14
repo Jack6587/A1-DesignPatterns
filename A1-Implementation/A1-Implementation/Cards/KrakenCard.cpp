@@ -1,11 +1,10 @@
 #include "KrakenCard.h"
-#include "../Card.h"
 #include <iostream>
 
 KrakenCard::KrakenCard(int cardValue) {
-	name = "Map";
+	name = "Kraken";
 	value = cardValue;
-	cardType = Card::Map;
+	cardType = Card::Kraken;
 }
 
 void KrakenCard::play(Game& game, Player& player) {

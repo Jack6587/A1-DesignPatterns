@@ -1,5 +1,4 @@
 #include "CannonCard.h"
-#include "../Card.h"
 #include <iostream>
 
 CannonCard::CannonCard(int cardValue) {

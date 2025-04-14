@@ -1,5 +1,4 @@
 #include "MapCard.h"
-#include "../Card.h"
 #include <iostream>
 
 MapCard::MapCard(int cardValue) {

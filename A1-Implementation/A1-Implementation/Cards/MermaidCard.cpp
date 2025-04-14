@@ -1,5 +1,4 @@
 #include "MermaidCard.h"
-#include "../Card.h"
 #include <iostream>
 
 MermaidCard::MermaidCard(int cardValue) {

@@ -1,5 +1,4 @@
 #include "KeyCard.h"
-#include "../Card.h"
 #include <iostream>
 
 KeyCard::KeyCard(int cardValue) {

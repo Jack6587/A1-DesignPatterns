@@ -1,4 +1,14 @@
 #include "Game.h"
+#include "Cards/CannonCard.h"
+#include "Cards/ChestCard.h"
+#include "Cards/KeyCard.h"
+#include "Cards/SwordCard.h"
+#include "Cards/HookCard.h"
+#include "Cards/OracleCard.h"
+#include "Cards/MapCard.h"
+#include "Cards/MermaidCard.h"
+#include "Cards/KrakenCard.h"
+
 #include <iostream>
 
 Game* Game::instance = nullptr; // static pointer to the instance of the Game class, ensuring only one instance is created and 
@@ -53,6 +63,18 @@ void Game::playRound() {
 
 void Game::createDeck() {
 	_deck = new Deck();
+
+	for (int i = 2; i <= 7; i++) {
+		_deck->addCard(new CannonCard(i));
+		_deck->addCard(new ChestCard(i));
+		_deck->addCard(new KeyCard(i));
+		_deck->addCard(new SwordCard(i));
+		_deck->addCard(new HookCard(i));
+		_deck->addCard(new OracleCard(i));
+		_deck->addCard(new MapCard(i));
+		_deck->addCard(new MermaidCard(i));
+		_deck->addCard(new KrakenCard(i));
+	}
 }
 
 void Game::shuffleDeck(CardCollection& cards) {

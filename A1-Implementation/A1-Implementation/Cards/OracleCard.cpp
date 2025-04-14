@@ -1,5 +1,4 @@
 #include "OracleCard.h"
-#include "../Card.h"
 #include <iostream>
 
 OracleCard::OracleCard(int cardValue) {
