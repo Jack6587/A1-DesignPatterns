@@ -9,6 +9,7 @@ public:
 	void addCards(CardCollection& cardSet);
 	CardCollection& getCards();
 	bool isEmpty() const;
+	void removeCard(Card* card);
 
 private:
 	CardCollection cards;

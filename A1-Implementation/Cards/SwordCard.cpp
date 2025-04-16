@@ -26,6 +26,8 @@ void SwordCard::play(Game& game, Player& player) {
 			highestCard = card;
 		}
 	}
+
+	opponentBank.removeCard(highestCard);
 }
 
 void SwordCard::willAddToBank(Game& game, Player& player) {

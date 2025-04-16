@@ -24,3 +24,12 @@ bool Bank::isEmpty() const {
 CardCollection& Bank::getCards() {
 	return cards;
 }
+
+void Bank::removeCard(Card* card) {
+	for (auto i = cards.begin(); i != cards.end(); i++) { // iterates over cards in bank
+		if (*i == card) {
+			cards.erase(i);
+			break;
+		}
+	}
+}
