@@ -17,6 +17,7 @@ public:
 
 	virtual CardType type() const;
 	virtual std::string str() const;
+	virtual int getValue() const;
 	virtual void willAddToBank(Game& game, Player& player) = 0;
 
 protected:

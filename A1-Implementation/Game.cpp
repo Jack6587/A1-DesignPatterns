@@ -140,6 +140,15 @@ Deck* Game::getDeck() {
 	return _deck;
 }
 
+Player* Game::getOpponent() {
+	if (currentPlayer == player1) {
+		return player2;
+	}
+	else {
+		return player1;
+	}
+}
+
 Game* Game::getInstance() {
 	if (instance == nullptr) { // if pointer (instance) hasn't been initialised
 		instance = new Game(); // creates an instance

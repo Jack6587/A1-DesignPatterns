@@ -73,6 +73,6 @@ const PlayArea& Player::getPlayArea() const {
 	return _playArea;
 }
 
-const Bank& Player::getBank() const {
+Bank& Player::getBank() {
 	return _bank;
 }

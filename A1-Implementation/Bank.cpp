@@ -16,3 +16,11 @@ void Bank::addCards(CardCollection& cardSet) {
 		cards.push_back(card);
 	}
 }
+
+bool Bank::isEmpty() const {
+	return cards.empty();
+}
+
+CardCollection& Bank::getCards() {
+	return cards;
+}
