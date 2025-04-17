@@ -19,7 +19,7 @@ public:
 
 	std::string getName() const;
 	int getTotalScore() const;
-	const PlayArea& getPlayArea() const;
+	PlayArea& getPlayArea();
 	Bank& getBank();
 
 private:

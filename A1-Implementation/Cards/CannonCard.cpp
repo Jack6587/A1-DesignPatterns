@@ -10,3 +10,7 @@ CannonCard::CannonCard(int cardValue) {
 void CannonCard::play(Game& game, Player& player) {
 
 }
+
+void CannonCard::willAddToBank(Game& game, Player& player) {
+
+}

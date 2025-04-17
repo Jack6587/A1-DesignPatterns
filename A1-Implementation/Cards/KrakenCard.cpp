@@ -10,3 +10,7 @@ KrakenCard::KrakenCard(int cardValue) {
 void KrakenCard::play(Game& game, Player& player) {
 
 }
+
+void KrakenCard::willAddToBank(Game& game, Player& player) {
+
+}

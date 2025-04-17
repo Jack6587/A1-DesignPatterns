@@ -61,7 +61,7 @@ void Player::printCards(const CardCollection& cards, const std::string& cardArea
 	std::cout << cardArea << ":\n"; // output the area name, such as "Deck"
 
 	for (Card* card : cards) {
-		std::cout << card->str() << std::endl; // outputs each card from the collection
+		std::cout << card->str() << "\n"; // outputs each card from the collection
 	}
 }
 
@@ -73,7 +73,7 @@ int Player::getTotalScore() const {
 	return _totalScore;
 }
 
-const PlayArea& Player::getPlayArea() const {
+PlayArea& Player::getPlayArea() {
 	return _playArea;
 }
 

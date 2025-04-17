@@ -9,3 +9,7 @@ void DiscardPile::addCards(CardCollection& cards) {
 		cards.push_back(card);
 	}
 }
+
+CardCollection& DiscardPile::getCards() {
+	return cards;
+}

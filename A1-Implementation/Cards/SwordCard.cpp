@@ -35,3 +35,7 @@ void SwordCard::play(Game& game, Player& player) {
 		std::cout << "No valid card to steal...\n";
 	}
 }
+
+void SwordCard::willAddToBank(Game& game, Player& player) {
+
+}

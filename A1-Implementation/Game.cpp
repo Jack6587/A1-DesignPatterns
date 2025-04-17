@@ -75,7 +75,7 @@ void Game::createDeck() {
 		_deck->addCard(new HookCard(i));
 		_deck->addCard(new OracleCard(i));
 		_deck->addCard(new MapCard(i));
-		_deck->addCard(new MermaidCard(i));
+		_deck->addCard(new MermaidCard(i + 2)); // Each mermaid card has higher value (+2) by default
 		_deck->addCard(new KrakenCard(i));
 	}
 }
