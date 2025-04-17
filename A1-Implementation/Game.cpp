@@ -53,7 +53,7 @@ void Game::playRound() {
 
 	while (!currentPlayer->isBust()) {
 		if (!promptPlayerToDraw()) {
-			currentPlayer->endTurn();
+			currentPlayer->endTurn(*this);
 			break;
 		}
 		else {
@@ -94,6 +94,7 @@ void Game::initialisePlayers() {
 void Game::drawCard() {
 	Card* card = _deck->drawCard();
 	if (card) {
+		std::cout << currentPlayer->getName() << "draws a " << card->str();
 		currentPlayer->playCard(card, *this);
 	}
 }

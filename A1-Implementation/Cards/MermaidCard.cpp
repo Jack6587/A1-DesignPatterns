@@ -10,7 +10,3 @@ MermaidCard::MermaidCard(int cardValue) {
 void MermaidCard::play(Game& game, Player& player) {
 
 }
-
-void MermaidCard::willAddToBank(Game& game, Player& player) {
-
-}

@@ -13,7 +13,7 @@ public:
 
 	void moveToBank(Card* card); // card is a pointer - because it's always changing (unlike a reference)
 	bool playCard(Card* card, Game& game); // moves card to play area, removes it from the current provided deck
-	void endTurn();
+	void endTurn(Game& game);
 	bool isBust();
 	void printCards(const CardCollection& cards, const std::string& cardArea);
 

@@ -10,7 +10,3 @@ MapCard::MapCard(int cardValue) {
 void MapCard::play(Game& game, Player& player) {
 
 }
-
-void MapCard::willAddToBank(Game& game, Player& player) {
-
-}

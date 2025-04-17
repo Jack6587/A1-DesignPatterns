@@ -10,7 +10,3 @@ HookCard::HookCard(int cardValue) {
 void HookCard::play(Game& game, Player& player) {
 
 }
-
-void HookCard::willAddToBank(Game& game, Player& player) {
-
-}

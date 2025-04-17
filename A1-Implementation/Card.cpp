@@ -12,3 +12,7 @@ std::string Card::str() const {
 int Card::getValue() const {
 	return value;
 }
+
+void Card::willAddToBank(Game& game, Player& player) {
+	// base implementation (does nothing for most cards - overridden in Key and Chest classes)
+}

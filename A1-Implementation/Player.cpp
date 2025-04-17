@@ -32,7 +32,11 @@ bool Player::playCard(Card* card, Game& game) {
 	return false;
 }
 
-void Player::endTurn() {
+void Player::endTurn(Game& game) {
+	for (Card* card : _playArea.getCards()) {
+		card->willAddToBank(game, *this);
+	}
+
 	for (Card* card : _playArea.getCards()) {
 		_bank.addCard(card);
 	}

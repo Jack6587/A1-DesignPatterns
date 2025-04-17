@@ -14,7 +14,7 @@ void SwordCard::play(Game& game, Player& player) {
 	Bank& opponentBank = opponent->getBank();
 
 	if (opponentBank.isEmpty()) {
-		std::cout << "No cards to steal from opponent's bank.\n";
+		std::cout << "No cards in other player's Bank. Play continues.\n";
 		return;
 	}
 
@@ -27,9 +27,11 @@ void SwordCard::play(Game& game, Player& player) {
 		}
 	}
 
-	opponentBank.removeCard(highestCard);
-}
-
-void SwordCard::willAddToBank(Game& game, Player& player) {
-
+	if (highestCard != nullptr) {
+		std::cout << "Sword used to steal " << highestCard->str() << std::endl;
+		opponentBank.removeCard(highestCard);
+	}
+	else {
+		std::cout << "No valid card to steal...\n";
+	}
 }
