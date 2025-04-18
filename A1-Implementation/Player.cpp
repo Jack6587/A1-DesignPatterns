@@ -40,9 +40,7 @@ void Player::endTurn(Game& game) {
 		card->willAddToBank(game, *this);
 	}
 
-	for (Card* card : _playArea.getCards()) {
-		_bank.addCard(card);
-	}
+	_bank.addCards(_playArea.getCards());
 
 	_playArea.clear();
 	printCards(getBank().getCards(), "Bank");
