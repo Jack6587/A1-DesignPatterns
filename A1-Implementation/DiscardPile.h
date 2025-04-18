@@ -6,6 +6,7 @@ public:
 	void addCard(Card* card);
 	void addCards(CardCollection& cardSet);
 	CardCollection& getCards();
+	Card* drawCard();
 
 private:
 	CardCollection cards;

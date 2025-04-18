@@ -13,3 +13,9 @@ void DiscardPile::addCards(CardCollection& cards) {
 CardCollection& DiscardPile::getCards() {
 	return cards;
 }
+
+Card* DiscardPile::drawCard() {
+	Card* topCard = cards.back(); // gets the last item from the vector
+	cards.pop_back(); // removes last item from the vector
+	return topCard;
+}
