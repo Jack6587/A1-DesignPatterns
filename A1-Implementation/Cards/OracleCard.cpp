@@ -16,7 +16,7 @@ void OracleCard::play(Game& game, Player& player) {
 		return;
 	}
 	Card* topCard = deck->getCards().back();
-	std::cout << "Oracle reveals that the next card in the deck is: " << topCard->str() << "\n";
+	std::cout << "The Oracle see a " << topCard->str() << "\n";
 }
 
 void OracleCard::willAddToBank(Game& game, Player& player) {

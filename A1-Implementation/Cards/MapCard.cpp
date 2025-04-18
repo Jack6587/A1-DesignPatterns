@@ -9,6 +9,7 @@ MapCard::MapCard(int cardValue) {
 }
 
 void MapCard::play(Game& game, Player& player) {
+	std::cout << "Draw 3 cards from the discard and pick one to add to the play area:\n";
 	CardCollection& discardCards = game.getDiscardPile().getCards();
 	CardCollection drawnCards;
 
@@ -22,12 +23,12 @@ void MapCard::play(Game& game, Player& player) {
 		discardCards.pop_back();
 		drawnCards.push_back(card);
 		player.getPlayArea().addCard(card);
-		std::cout << (i + 1) << card->str() << "\n";
+		std::cout << "(" << (i + 1) << ")" << card->str() << "\n";
 	}
 
 	int choice = 0;
 	while (choice < 1 || choice < 3) {
-		std::cout << "Choose a card to play (1-3): ";
+		std::cout << "Which card do you pick?\n";
 		std::cin >> choice;
 	}
 
