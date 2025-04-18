@@ -1,5 +1,4 @@
 #include "OracleCard.h"
-#include "../Deck.h"
 #include "../Game.h"
 #include <iostream>
 

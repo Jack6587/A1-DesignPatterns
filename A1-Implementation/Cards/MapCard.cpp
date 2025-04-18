@@ -1,7 +1,5 @@
 #include "MapCard.h"
 #include "../Game.h"
-#include "../Player.h"
-#include "../PlayArea.h"
 #include <iostream>
 
 MapCard::MapCard(int cardValue) {
@@ -14,8 +12,8 @@ void MapCard::play(Game& game, Player& player) {
 	CardCollection& discardCards = game.getDiscardPile().getCards();
 	CardCollection drawnCards;
 
-	if (discardCards.empty()) {
-		std::cout << "No cards in the discard pile!\n";
+	if (discardCards.size() < 3) {
+		std::cout << "Not enough cards in the discard pile!\n";
 		return;
 	}
 
@@ -24,11 +22,11 @@ void MapCard::play(Game& game, Player& player) {
 		discardCards.pop_back();
 		drawnCards.push_back(card);
 		player.getPlayArea().addCard(card);
-		std::cout << card->str() << "\n";
+		std::cout << (i + 1) << card->str() << "\n";
 	}
 
 	int choice = 0;
-	while (choice > drawnCards.size() || choice < 1) {
+	while (choice < 1 || choice < 3) {
 		std::cout << "Choose a card to play (1-3): ";
 		std::cin >> choice;
 	}

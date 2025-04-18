@@ -1,6 +1,5 @@
 #include "SwordCard.h"
 #include "../Game.h"
-#include "../CardCollection.h"
 #include <iostream>
 
 SwordCard::SwordCard(int cardValue) {
