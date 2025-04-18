@@ -15,7 +15,7 @@ void ChestCard::play(Game& game, Player& player) {
 void ChestCard::willAddToBank(Game& game, Player& player) {
 	const CardCollection& movingToBank = player.getPlayArea().getCards(); // gets all cards that will be moving to bank
 	bool hasKeyCard = false;
-	for (Card* card : player.getBank().getCards()) {
+	for (Card* card : movingToBank) {
 		if (card->type() == Card::Key) {
 			hasKeyCard = true;
 			break;
