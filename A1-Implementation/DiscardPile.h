@@ -10,7 +10,7 @@ public:
 	Card* drawCard();
 
 private:
-	CardCollection cards;
+	CardCollection _cards;
 };
 
 #endif //DISCARD_PILE_H

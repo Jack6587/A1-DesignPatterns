@@ -1,7 +1,7 @@
 #include "DiscardPile.h"
 
 void DiscardPile::addCard(Card* card) {
-	cards.push_back(card);
+	_cards.push_back(card);
 }
 
 void DiscardPile::addCards(CardCollection& cards) {
@@ -11,11 +11,11 @@ void DiscardPile::addCards(CardCollection& cards) {
 }
 
 CardCollection& DiscardPile::getCards() {
-	return cards;
+	return _cards;
 }
 
 Card* DiscardPile::drawCard() {
-	Card* topCard = cards.back(); // gets the last item from the vector
-	cards.pop_back(); // removes last item from the vector
+	Card* topCard = _cards.back(); // gets the last item from the vector
+	_cards.pop_back(); // removes last item from the vector
 	return topCard;
 }

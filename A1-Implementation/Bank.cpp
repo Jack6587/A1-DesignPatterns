@@ -2,33 +2,33 @@
 #include <iostream>
 
 void Bank::toString() {
-	for (Card* card : cards) {
+	for (Card* card : _cards) {
 		std::cout << card << std::endl;
 	}
 }
 
 void Bank::addCard(Card* card) {
-	cards.push_back(card); // adds item to end of the vector
+	_cards.push_back(card); // adds item to end of the vector
 }
 
 void Bank::addCards(CardCollection& cardSet) {
 	for (Card* card : cardSet) {
-		cards.push_back(card);
+		_cards.push_back(card);
 	}
 }
 
 bool Bank::isEmpty() const {
-	return cards.empty();
+	return _cards.empty();
 }
 
 CardCollection& Bank::getCards() {
-	return cards;
+	return _cards;
 }
 
 void Bank::removeCard(Card* card) {
-	for (auto i = cards.begin(); i != cards.end(); i++) { // iterates over cards in bank
+	for (auto i = _cards.begin(); i != _cards.end(); i++) { // iterates over cards in bank
 		if (*i == card) {
-			cards.erase(i);
+			_cards.erase(i);
 			break;
 		}
 	}

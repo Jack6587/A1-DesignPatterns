@@ -13,7 +13,7 @@ public:
 	void removeCard(Card* card);
 
 private:
-	CardCollection cards;
+	CardCollection _cards;
 };
 
 #endif //BANK_H
