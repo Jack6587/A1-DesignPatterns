@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DISCARD_PILE_H
+#define DISCARD_PILE_H
 #include "CardCollection.h"
 
 class DiscardPile {
@@ -11,3 +12,5 @@ public:
 private:
 	CardCollection cards;
 };
+
+#endif //DISCARD_PILE_H

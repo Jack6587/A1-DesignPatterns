@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CARD_H
+#define CARD_H
 #include <string>
 
 class Game;
@@ -26,3 +27,5 @@ protected:
 	CardType cardType;
 	std::string ability;
 };
+
+#endif //CARD_H

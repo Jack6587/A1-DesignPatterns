@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PLAYER_H
+#define PLAYER_H
 #include <string>
 #include "CardCollection.h"
 #include "Card.h"
@@ -28,3 +29,5 @@ private:
 	PlayArea _playArea;
 	Bank _bank;
 };
+
+#endif //PLAYER_H

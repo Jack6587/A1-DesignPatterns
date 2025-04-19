@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PLAY_AREA_H
+#define PLAY_AREA_H
 #include "CardCollection.h"
 #include <string>
 
@@ -12,3 +13,5 @@ public:
 private:
 	CardCollection cards;
 };
+
+#endif // PLAY_AREA_H

@@ -1,4 +1,5 @@
-#pragma once // temp
+#ifndef SWORD_CARD_H
+#define SWORD_CARD_H
 #include "../Card.h"
 #include <string>
 
@@ -9,3 +10,5 @@ public:
 	void play(Game& game, Player& player) override;
 	void willAddToBank(Game& game, Player& player) override;
 };
+
+#endif //SWORD_CARD_H

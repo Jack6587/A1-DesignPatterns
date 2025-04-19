@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BANK_H
+#define BANK_H
 #include "CardCollection.h"
 #include <string>
 
@@ -14,3 +15,5 @@ public:
 private:
 	CardCollection cards;
 };
+
+#endif //BANK_H

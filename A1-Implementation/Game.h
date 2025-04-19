@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 #include "Deck.h"
 #include "Card.h"
 #include "Player.h"
@@ -41,3 +42,5 @@ private:
 	static Game* instance; // game has just one pointer to its only instance
 
 };
+
+#endif //GAME_H
