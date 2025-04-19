@@ -12,7 +12,7 @@ endif()
 project ("A1-Implementation")
 
 # Add source to this project's executable.
-add_executable (A1-Implementation "A1-Implementation.cpp" "A1-Implementation.h" "Bank.cpp" "Bank.h" "CardCollection.h" "Card.h" "Card.cpp" "Deck.h" "Deck.cpp" "DiscardPile.h" "DiscardPile.cpp" "PlayArea.h" "PlayArea.cpp" "Player.h" "Player.cpp" "Game.h" "Game.cpp" "Cards/CannonCard.cpp" "Cards/CannonCard.h" "Cards/ChestCard.h" "Cards/ChestCard.cpp" "Cards/HookCard.h" "Cards/HookCard.cpp" "Cards/KeyCard.h" "Cards/KeyCard.cpp" "Cards/KrakenCard.cpp" "Cards/KrakenCard.h" "Cards/MapCard.h" "Cards/MapCard.cpp" "Cards/MermaidCard.cpp" "Cards/MermaidCard.h" "Cards/OracleCard.h" "Cards/OracleCard.cpp" "Cards/SwordCard.h" "Cards/SwordCard.cpp")
+add_executable (A1-Implementation "A1-Implementation.cpp" "A1-Implementation.h" "Bank.cpp" "Bank.h" "CardCollection.h" "Card.h" "Card.cpp" "Deck.h" "Deck.cpp" "DiscardPile.h" "DiscardPile.cpp" "PlayArea.h" "PlayArea.cpp" "Player.h" "Player.cpp" "Game.h" "Game.cpp" "Cards/CannonCard.cpp" "Cards/CannonCard.h" "Cards/ChestCard.h" "Cards/ChestCard.cpp" "Cards/HookCard.h" "Cards/HookCard.cpp" "Cards/KeyCard.h" "Cards/KeyCard.cpp" "Cards/KrakenCard.cpp" "Cards/KrakenCard.h" "Cards/MapCard.h" "Cards/MapCard.cpp" "Cards/MermaidCard.cpp" "Cards/MermaidCard.h" "Cards/OracleCard.h" "Cards/OracleCard.cpp" "Cards/SwordCard.h" "Cards/SwordCard.cpp" "GameTitle.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET A1-Implementation PROPERTY CXX_STANDARD 20)

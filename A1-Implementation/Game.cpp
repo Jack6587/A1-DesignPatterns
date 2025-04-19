@@ -9,6 +9,7 @@
 #include "Cards/MapCard.h"
 #include "Cards/MermaidCard.h"
 #include "Cards/KrakenCard.h"
+#include "GameTitle.h"
 #include <algorithm>
 #include <random>
 #include <iostream>
@@ -33,6 +34,7 @@ Game::~Game() {
 }
 
 void Game::startGame() {
+	std::cout << GAME_TITLE << std::endl;
 	createDeck(); // set up deck for first time
 	shuffleDeck();
 	initialisePlayers(); // initialise new players
