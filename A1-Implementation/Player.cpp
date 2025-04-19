@@ -3,6 +3,7 @@
 #include "Game.h"
 #include <iostream>
 #include <set>
+#include <map>
 
 Player::Player() {
 	std::string names[] = { "Sam", "Billy", "Jen", "Bob", "Sally",
@@ -36,11 +37,12 @@ bool Player::playCard(Card* card, Game& game) {
 }
 
 void Player::endTurn(Game& game) {
-	for (Card* card : _playArea.getCards()) {
+	CardCollection& playedCards = _playArea.getCards();
+	for (Card* card : playedCards) {
 		card->willAddToBank(game, *this);
 	}
 
-	_bank.addCards(_playArea.getCards());
+	_bank.addCards(playedCards);
 
 	_playArea.clear();
 	printCards(getBank().getCards(), "Bank");
@@ -50,8 +52,8 @@ bool Player::isBust() {
 	std::set<Card::CardType> cardTypes;
 
 	for (Card* card : _playArea.getCards()) { // loop over play area cards
-		Card::CardType type = card->type(); // get the type of each card
-		if (cardTypes.count(type)) { // if card type already exists (using count, from set)
+		Card::CardType type = card->type(); // get the type of the current card
+		if (cardTypes.count(type)) { // determine if card type already exists (using count, from set)
 			return true; // return true
 		}
 		cardTypes.insert(type); // otherwise, add to the caradTypes set for further checking
@@ -73,6 +75,31 @@ std::string Player::getName() const {
 
 int Player::getTotalScore() const {
 	return _totalScore;
+}
+
+void Player::calculateScore() {
+	CardCollection& highestCards;
+	CardCollection& bankCards = _bank.getCards();
+
+	for (Card* card : bankCards) {
+		bool replaced = false;
+		for (int i = 0; i < bankCards.size(); i++) {
+			if (highestCards[i]->type() == card->type()) {
+				if (highestCards[i]->getValue() < card->getValue()) {
+					highestCards[i] = card;
+				}
+				replaced = true;
+				break;
+			}
+		}
+
+		if (!replaced) {
+			highestCards.push_back(card);
+		}
+	}
+
+
+
 }
 
 PlayArea& Player::getPlayArea() {

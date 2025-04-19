@@ -132,6 +132,7 @@ void Game::switchPlayer() {
 
 void Game::gameOver() {
 
+	endGame();
 }
 
 DiscardPile& Game::getDiscardPile() {
