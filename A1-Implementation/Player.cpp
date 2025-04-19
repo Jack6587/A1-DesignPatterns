@@ -67,6 +67,11 @@ void Player::printCards(const CardCollection& cards, const std::string& cardArea
 	for (Card* card : cards) {
 		std::cout << card->str() << "\n"; // outputs each card from the collection
 	}
+
+	if (cardArea == "Bank") {
+		calculateScore();
+		std::cout << "| Score: " << getTotalScore() << std::endl;
+	}
 }
 
 std::string Player::getName() const {
@@ -78,7 +83,7 @@ int Player::getTotalScore() const {
 }
 
 void Player::calculateScore() {
-	CardCollection& highestCards;
+	CardCollection highestCards;
 	CardCollection& bankCards = _bank.getCards();
 
 	for (Card* card : bankCards) {
@@ -98,7 +103,12 @@ void Player::calculateScore() {
 		}
 	}
 
+	int score = 0;
+	for (Card* card : highestCards) {
+		score += card->getValue();
+	}
 
+	_totalScore = score;
 
 }
 

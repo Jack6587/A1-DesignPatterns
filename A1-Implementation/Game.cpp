@@ -40,7 +40,11 @@ void Game::startGame() {
 	initialisePlayers(); // initialise new players
 	std::cout << "Starting Dead Man's Draw++!" << std::endl;
 
-	playRound(); // starts the first round
+	while (currentRound <= 5) {
+		playRound(); // plays 5 rounds
+	}
+
+	endGame();
 }
 
 void Game::endGame() {
@@ -53,17 +57,28 @@ void Game::playRound() {
 	std::cout << "--- Round " << currentRound << ", Turn " << currentTurn << " ---" << std::endl;
 	drawCard();
 
-	while (!currentPlayer->isBust()) {
-		if (!promptPlayerToDraw()) {
-			currentPlayer->endTurn(*this);
-			break;
+	for (int i = 0; i < 2; i++) {
+		while (!currentPlayer->isBust()) {
+			if (!promptPlayerToDraw()) {
+				currentPlayer->endTurn(*this);
+				break;
+			}
+			else {
+				drawCard();
+			}
 		}
-		else {
-			drawCard();
+
+		currentPlayer->calculateScore();
+		if (currentPlayer->getTotalScore() >= 40) {
+			std::cout << "--- Game Over ---" << std::endl;
+			endGame();
 		}
+
+		currentTurn++;
+		switchPlayer();
 	}
 
-	switchPlayer();
+	currentRound++;
 }
 
 void Game::createDeck() {
@@ -109,10 +124,11 @@ bool Game::promptPlayerToDraw() {
 }
 
 void Game::outputScores() {
-	// player1->printCards();
-	std::cout << "Score: " << std::endl;
+	player1->printCards(player1->getBank().getCards(), "Bank");
 
-	// player2->printCards();
+	player2->printCards(player2->getBank().getCards(), "Bank");
+
+	// need to determine winner
 }
 
 void Game::switchPlayer() {
@@ -124,15 +140,6 @@ void Game::switchPlayer() {
 	}
 
 	currentTurn++; // increment turn after player is switched
-
-	if (currentTurn % 2 == 0) { // current turn should be even if both players have made their turn
-		currentRound++; // increment round if both players have had a turn
-	}
-}
-
-void Game::gameOver() {
-
-	endGame();
 }
 
 DiscardPile& Game::getDiscardPile() {
