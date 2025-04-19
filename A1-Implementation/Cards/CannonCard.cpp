@@ -31,9 +31,21 @@ void CannonCard::play(Game& game, Player& player) {
 		}
 	}
 
-	for (Card* card : highestCards) {
-		std::cout << card->str() << std::endl; // output each card collected (highest of each suit)
+	std::cout << "Shoot the top card of any suit from the other player's Bank into the Discard Pile:\n";
+	for (int i = 0; i < highestCards.size(); i++) {
+		std::cout << (i + 1) << highestCards[i]->str() << std::endl;
 	}
+
+	int choice = 0;
+	while (choice < 0 || choice >= highestCards.size()) {
+		std::cout << "Which card do you pick? ";
+		std::cin >> choice;
+	}
+
+	Card* selectedCard = highestCards[choice - 1];
+	std::cout << "You shoot the " << selectedCard->str() << " out of the other player's Bank\n";
+	game.getOpponent()->getBank().removeCard(selectedCard);
+	game.getDiscardPile().addCard(selectedCard);
 }
 
 void CannonCard::willAddToBank(Game& game, Player& player) {
