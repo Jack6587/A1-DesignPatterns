@@ -35,6 +35,8 @@ Game::~Game() {
 	_deck = nullptr;
 }
 
+// Starts the game loop, displaying the title, creating and shuffling the deck and initialising players
+// Plays up to five rounds in this implementation, or ends early if players reaches winning score (40)
 void Game::startGame() {
 	std::cout << GAME_TITLE << std::endl;
 	createDeck(); // set up deck for first time
@@ -49,6 +51,7 @@ void Game::startGame() {
 	endGame();
 }
 
+// Ends the game, displaying final scores and determining a winner
 void Game::endGame() {
 	std::cout << "--- Game Over ---" << std::endl;
 	outputScores();
@@ -63,6 +66,9 @@ void Game::endGame() {
 	}
 }
 
+// Plays a round of the game. Each player here gets a turn (see the for loop), where they draw a card,
+// check if they busted (in which case the turn ends and the player is switched), or are prompted to draw again, repeating until they bust or say no
+// After each turn, the score is checked
 void Game::playRound() {
 	for (int i = 0; i < 2; i++) { // for loop that ensures each player gets a turn (one switch per iteration)
 		std::cout << "--- Round " << currentRound << ", Turn " << currentTurn << " ---" << std::endl;
@@ -91,9 +97,10 @@ void Game::playRound() {
 		switchPlayer();
 	}
 
-	currentRound++;
+	currentRound++; // after both players finish
 }
 
+// Creates a deck of 54 cards: 9 suits with 6 cards each
 void Game::createDeck() {
 	_deck = new Deck();
 
@@ -110,10 +117,12 @@ void Game::createDeck() {
 	}
 }
 
+// randomly shuffle the deck using std::shuffle
 void Game::shuffleDeck() {
 	std::shuffle(_deck->getCards().begin(), _deck->getCards().end(), std::default_random_engine{}); // shuffles elements within the range of beginning to end of the deck randomly using random number generator
 }
 
+// Initialises two players, setting the currentPlayer to player1
 void Game::initialisePlayers() {
 	player1 = new Player();
 	player2 = new Player();
@@ -121,6 +130,7 @@ void Game::initialisePlayers() {
 	currentPlayer = player1;
 }
 
+// Draws one card from the deck. Returns true if the player busts or the deck is empty
 bool Game::drawCard() {
 	Card* card = _deck->drawCard();
 	if (!card) {
@@ -129,10 +139,12 @@ bool Game::drawCard() {
 		return true; // return true, ending the turn -> as seen in playRound() method
 	}
 
-	bool playerBust = currentPlayer->playCard(card, *this);
+	bool playerBust = currentPlayer->playCard(card, *this); // plays the card immediately
+	currentPlayer->printCards(currentPlayer->getPlayArea().getCards(), "Play Area"); // output play area after card is played
 	return playerBust; // returns true / false based on what playCard() returns - true if bust, false if no bust
 }
 
+// Prompts the current player to determine if they want to draw again - returns true if they want to draw
 bool Game::promptPlayerToDraw() {
 	std::string input;
 	std::cout << "Draw again? (y/n): ";
@@ -141,12 +153,14 @@ bool Game::promptPlayerToDraw() {
 	return input == "y" || input == "Y";
 }
 
+// Output both players' scores based on their banked cards
 void Game::outputScores() {
 	player1->printCards(player1->getBank().getCards(), "Bank");
 
 	player2->printCards(player2->getBank().getCards(), "Bank");
 }
 
+// Switch current player to the other player, increment the turn counter
 void Game::switchPlayer() {
 	if (player1 == currentPlayer) { // switch player based on who just made their turn
 		currentPlayer = player2;
@@ -178,7 +192,7 @@ Player* Game::getOpponent() {
 Player* Game::getCurrentPlayer() {
 	return currentPlayer;
 }
-
+ // Singleton accessor: ensures that only a single instance of the game exists. Returns it if it does, creates it if it doesn't
 Game* Game::getInstance() {
 	if (instance == nullptr) { // if pointer (instance) hasn't been initialised
 		instance = new Game(); // creates an instance

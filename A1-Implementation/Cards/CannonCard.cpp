@@ -38,7 +38,7 @@ void CannonCard::play(Game& game, Player& player) {
 
 	std::cout << "Shoot the top card of any suit from the other player's Bank into the Discard Pile:\n";
 	for (int i = 0; i < highestCards.size(); i++) {
-		std::cout << (i + 1) << highestCards[i]->str() << std::endl;
+		std::cout << "(" << (i + 1) << ")" << highestCards[i]->str() << std::endl;
 	}
 
 	int choice = 0;

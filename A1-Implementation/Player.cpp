@@ -33,7 +33,6 @@ bool Player::playCard(Card* card, Game& game) {
 	}
 
 	card->play(game, *this); // otherwise, the card is played with its specific ability, using the game reference and this player
-	printCards(getPlayArea().getCards(), "Play Area");
 	return false; // return false meaning the player did not bust, used for checking whether to continue prompting a player to draw
 }
 

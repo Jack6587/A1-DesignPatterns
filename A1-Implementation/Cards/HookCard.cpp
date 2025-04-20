@@ -37,7 +37,7 @@ void HookCard::play(Game& game, Player& player) {
 
 	std::cout << "Select a highest-value card from any of the suits in your Bank: " << std::endl;
 	for (int i = 0; i < highestCards.size(); i++) {
-		std::cout << (i + 1) << highestCards[i]->str() << std::endl; // outputs each card from highest cards collection (determined by its size)
+		std::cout << "(" << (i + 1) << ")" << highestCards[i]->str() << std::endl; // outputs each card from highest cards collection (determined by its size)
 	}
 
 	int choice = 0;
