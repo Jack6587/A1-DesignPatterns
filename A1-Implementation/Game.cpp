@@ -67,20 +67,23 @@ void Game::playRound() {
 	for (int i = 0; i < 2; i++) { // for loop that ensures each player gets a turn (one switch per iteration)
 		std::cout << "--- Round " << currentRound << ", Turn " << currentTurn << " ---" << std::endl;
 		currentPlayer->printCards(currentPlayer->getBank().getCards(), "Bank");
-		drawCard();
 
-		while (!currentPlayer->isBust()) {
-			if (!promptPlayerToDraw()) {
-				currentPlayer->endTurn(*this);
-				break;
-			}
-			else {
-				drawCard();
+		bool busted = drawCard(); // draw card returns true if bust and false if not to ensure the player turn ends if a player busts
+
+		if (!busted) { // if player did not bust
+			while (true) { // while no breaks occur
+				if (!promptPlayerToDraw()) {
+					currentPlayer->endTurn(*this); // end turn if player says no to draw again
+					break;
+				}
+				if(drawCard()) { // if drawCard() called again returns true, break
+					break;
+				}
 			}
 		}
 
 		currentPlayer->calculateScore();
-		if (currentPlayer->getTotalScore() >= 40) {
+		if (currentPlayer->getTotalScore() >= 40) { // check if score reached winning score
 			endGame();
 			return;
 		}
@@ -118,15 +121,16 @@ void Game::initialisePlayers() {
 	currentPlayer = player1;
 }
 
-void Game::drawCard() {
+bool Game::drawCard() {
 	Card* card = _deck->drawCard();
 	if (!card) {
 		std::cout << "Deck is empty! Game over...\n";
 		endGame();
-		return;
+		return true; // return true, ending the turn -> as seen in playRound() method
 	}
 
-	currentPlayer->playCard(card, *this);
+	bool playerBust = currentPlayer->playCard(card, *this);
+	return playerBust; // returns true / false based on what playCard() returns - true if bust, false if no bust
 }
 
 bool Game::promptPlayerToDraw() {

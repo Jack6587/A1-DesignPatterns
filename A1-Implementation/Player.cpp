@@ -29,12 +29,12 @@ bool Player::playCard(Card* card, Game& game) {
 
 		_playArea.clear();
 		game.getCurrentPlayer()->endTurn(game);
-		return true; // play area is cleared and true returned
+		return true; // play area is cleared and true returned - this returns back to drawCard() method (ultimately used in playRound for checking)
 	}
 
 	card->play(game, *this); // otherwise, the card is played with its specific ability, using the game reference and this player
 	printCards(getPlayArea().getCards(), "Play Area");
-	return false;
+	return false; // return false meaning the player did not bust, used for checking whether to continue prompting a player to draw
 }
 
 void Player::endTurn(Game& game) {

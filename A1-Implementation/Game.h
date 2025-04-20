@@ -19,7 +19,7 @@ public:
 
 	void playRound();
 
-	void drawCard(); // for getting a card from the deck
+	bool drawCard(); // for getting a card from the deck
 	bool promptPlayerToDraw();
 	void outputScores();
 	void switchPlayer();
