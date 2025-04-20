@@ -31,6 +31,8 @@ Game::~Game() {
 	instance = nullptr; // instance needs to be set to nullptr -
 	// if a new game is started, it will still point to the old 
 	// address and then a new instance cannot be made
+	delete _deck;
+	_deck = nullptr;
 }
 
 void Game::startGame() {
@@ -48,16 +50,24 @@ void Game::startGame() {
 }
 
 void Game::endGame() {
-
+	std::cout << "--- Game Over ---" << std::endl;
 	outputScores();
-	// if(player1.totalScore > player2.totalScore){return player1 wins!
+	if (player1->getTotalScore() > player2->getTotalScore()) {
+		std::cout << player1->getName() << " wins!\n";
+	}
+	else if (player2->getTotalScore() > player1->getTotalScore()) {
+		std::cout << player2->getName() << " wins!\n";
+	}
+	else {
+		std::cout << "Tie!" << std::endl;
+	}
 }
 
 void Game::playRound() {
-	std::cout << "--- Round " << currentRound << ", Turn " << currentTurn << " ---" << std::endl;
-	drawCard();
+	for (int i = 0; i < 2; i++) { // for loop that ensures each player gets a turn (one switch per iteration)
+		std::cout << "--- Round " << currentRound << ", Turn " << currentTurn << " ---" << std::endl;
+		drawCard();
 
-	for (int i = 0; i < 2; i++) {
 		while (!currentPlayer->isBust()) {
 			if (!promptPlayerToDraw()) {
 				currentPlayer->endTurn(*this);
@@ -70,11 +80,10 @@ void Game::playRound() {
 
 		currentPlayer->calculateScore();
 		if (currentPlayer->getTotalScore() >= 40) {
-			std::cout << "--- Game Over ---" << std::endl;
 			endGame();
+			return;
 		}
 
-		currentTurn++;
 		switchPlayer();
 	}
 
@@ -110,9 +119,13 @@ void Game::initialisePlayers() {
 
 void Game::drawCard() {
 	Card* card = _deck->drawCard();
-	if (card) {
-		currentPlayer->playCard(card, *this);
+	if (!card) {
+		std::cout << "Deck is empty! Game over...\n";
+		endGame();
+		return;
 	}
+
+	currentPlayer->playCard(card, *this);
 }
 
 bool Game::promptPlayerToDraw() {
@@ -127,8 +140,6 @@ void Game::outputScores() {
 	player1->printCards(player1->getBank().getCards(), "Bank");
 
 	player2->printCards(player2->getBank().getCards(), "Bank");
-
-	// need to determine winner
 }
 
 void Game::switchPlayer() {

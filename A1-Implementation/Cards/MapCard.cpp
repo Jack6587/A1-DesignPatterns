@@ -22,19 +22,18 @@ void MapCard::play(Game& game, Player& player) {
 		Card* card = discardCards.back();
 		discardCards.pop_back();
 		drawnCards.push_back(card);
-		player.getPlayArea().addCard(card);
 		std::cout << "(" << (i + 1) << ")" << card->str() << "\n";
 	}
 
 	int choice = 0;
-	while (choice < 1 || choice < 3) {
+	while (choice < 1 || choice > 3) {
 		std::cout << "Which card do you pick?\n";
 		std::cin >> choice;
 	}
 
 	Card* chosenCard = drawnCards[choice-1];
 	player.playCard(chosenCard, game);
-	drawnCards.erase(chosenCard);
+	drawnCards.erase(drawnCards.begin() + (choice - 1));
 
 	for (Card* card : drawnCards){
 		game.getDiscardPile().addCard(card);
