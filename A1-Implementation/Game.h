@@ -27,6 +27,7 @@ public:
 	DiscardPile& getDiscardPile();
 	Deck* getDeck();
 	Player* getOpponent();
+	Player* getCurrentPlayer();
 
 	static Game* getInstance(); // static so we can access this 
 	// before game is instantiated (and is used to instantiate the game in the first place)

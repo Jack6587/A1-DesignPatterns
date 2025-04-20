@@ -2,11 +2,15 @@
 //
 
 #include "A1-Implementation.h"
+#include "Game.h"
 
 using namespace std;
 
 int main()
 {
-	cout << "Hello CMake." << endl;
+	Game* game = Game::getInstance();
+	game->startGame();
+
+	delete game;
 	return 0;
 }

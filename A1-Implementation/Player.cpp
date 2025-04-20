@@ -17,7 +17,7 @@ void Player::moveToBank(Card* card) {
 }
 
 bool Player::playCard(Card* card, Game& game) {
-	std::cout << getName() << "draws a " << card->str();
+	std::cout << getName() << " draws a " << card->str() << std::endl;
 	_playArea.addCard(card);
 
 	if (isBust()) {
@@ -28,6 +28,7 @@ bool Player::playCard(Card* card, Game& game) {
 		}
 
 		_playArea.clear();
+		game.getCurrentPlayer()->endTurn(game);
 		return true; // play area is cleared and true returned
 	}
 
@@ -83,29 +84,20 @@ int Player::getTotalScore() const {
 }
 
 void Player::calculateScore() {
-	CardCollection highestCards;
-	CardCollection& bankCards = _bank.getCards();
+	std::map<Card::CardType, int> highestCards;
 
-	for (Card* card : bankCards) {
-		bool replaced = false;
-		for (int i = 0; i < bankCards.size(); i++) {
-			if (highestCards[i]->type() == card->type()) {
-				if (highestCards[i]->getValue() < card->getValue()) {
-					highestCards[i] = card;
-				}
-				replaced = true;
-				break;
-			}
-		}
+	for (Card* card : _bank.getCards()) {
+		Card::CardType type = card->type();
+		int value = card->getValue();
 
-		if (!replaced) {
-			highestCards.push_back(card);
+		if (highestCards.find(type) == highestCards.end() || value > highestCards[type]) {
+			highestCards[type] = value;
 		}
 	}
 
 	int score = 0;
-	for (Card* card : highestCards) {
-		score += card->getValue();
+	for (const auto& pair : highestCards) {
+		score += pair.second; // value of the key-value pair in map
 	}
 
 	_totalScore = score;

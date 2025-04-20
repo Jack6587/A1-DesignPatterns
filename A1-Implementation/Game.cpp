@@ -66,6 +66,7 @@ void Game::endGame() {
 void Game::playRound() {
 	for (int i = 0; i < 2; i++) { // for loop that ensures each player gets a turn (one switch per iteration)
 		std::cout << "--- Round " << currentRound << ", Turn " << currentTurn << " ---" << std::endl;
+		currentPlayer->printCards(currentPlayer->getBank().getCards(), "Bank");
 		drawCard();
 
 		while (!currentPlayer->isBust()) {
@@ -168,6 +169,10 @@ Player* Game::getOpponent() {
 	else {
 		return player1;
 	}
+}
+
+Player* Game::getCurrentPlayer() {
+	return currentPlayer;
 }
 
 Game* Game::getInstance() {
