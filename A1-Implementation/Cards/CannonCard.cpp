@@ -9,6 +9,8 @@ CannonCard::CannonCard(int cardValue) {
 	cardType = Card::Cannon;
 }
 
+// Plays the cannon ability.Player can select the card based on any of the highest value cards in the opponent's bank.
+// The selected card is removed from the opponent's bank and added to the discard pile. A message is displayed if opponent has no banked cards
 void CannonCard::play(Game& game, Player& player) {
 	CardCollection& opponentBank = game.getOpponent()->getBank().getCards(); // get the cards in opponent's bank
 	std::map<Card::CardType, Card*> highestCards; // make a new collection for highest cards to output / select from
@@ -17,7 +19,7 @@ void CannonCard::play(Game& game, Player& player) {
 		Card::CardType type = card->type();
 		int value = card->getValue();
 
-		if (highestCards.find(type) == highestCards.end() || value > highestCards[type]->getValue()) {
+		if (highestCards.find(type) == highestCards.end() || value > highestCards[type]->getValue()) { // checks if this type of card exists in the map, or if the value of the already existing card with the suit is lower than current iteration card
 			highestCards[type] = card;
 		}
 	}

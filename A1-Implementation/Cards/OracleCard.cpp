@@ -8,6 +8,8 @@ OracleCard::OracleCard(int cardValue) {
 	cardType = Card::Oracle;
 }
 
+// Lets the player see the card at the top of the deck without drawing it
+// Does so by simply getting the card from the deck using .back()
 void OracleCard::play(Game& game, Player& player) {
 	Deck* deck = game.getDeck();
 

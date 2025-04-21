@@ -9,6 +9,8 @@ HookCard::HookCard(int cardValue) {
 	cardType = Card::Hook;
 }
 
+// Lets the player choose the highest-value card from their bank to play. Display a list of cards (highest value)
+// from each suit that belongs in their bank. Player selects one, which removes it from their bank and moves to the play area
 void HookCard::play(Game& game, Player& player) {
 	CardCollection& playerBank = player.getBank().getCards();
 	std::map<Card::CardType, Card*> highestCards;

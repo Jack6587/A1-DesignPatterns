@@ -8,6 +8,8 @@ MapCard::MapCard(int cardValue) {
 	cardType = Card::Map;
 }
 
+// Lets the player draw 3 cards from the discard pile. THe player can choose one from those 3.
+// Once selected and played, return the other 2 cards to discard pile
 void MapCard::play(Game& game, Player& player) {
 	std::cout << "    Draw 3 cards from the discard and pick one to add to the play area:\n";
 	CardCollection& discardCards = game.getDiscardPile().getCards();
@@ -18,7 +20,7 @@ void MapCard::play(Game& game, Player& player) {
 		return;
 	}
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 3; i++) { // loop 3 times for 3 cards
 		Card* card = discardCards.back();
 		discardCards.pop_back();
 		drawnCards.push_back(card);

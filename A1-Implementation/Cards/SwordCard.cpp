@@ -8,6 +8,8 @@ SwordCard::SwordCard(int cardValue) {
 	cardType = Card::Sword;
 }
 
+// Lets the player steal the highest-value card from opponent's bank
+// Iterates over all cards in the opponent's bank, gets the highest value card, and removing it from the bank
 void SwordCard::play(Game& game, Player& player) {
 	Player* opponent = game.getOpponent();
 	Bank& opponentBank = opponent->getBank();

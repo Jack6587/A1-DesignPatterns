@@ -9,6 +9,8 @@ KrakenCard::KrakenCard(int cardValue) {
 	cardType = Card::Kraken;
 }
 
+// Allows the player to draw 3 cards from the deck and play each consecutively. Break if the plaer busts
+// Notify player if not enough cards in the deck
 void KrakenCard::play(Game& game, Player& player) {
 	std::cout << "    Draw 3 cards from the deck and play each:\n";
 	CardCollection& deckCards = game.getDeck()->getCards();

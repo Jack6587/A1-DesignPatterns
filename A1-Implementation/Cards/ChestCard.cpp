@@ -8,10 +8,15 @@ ChestCard::ChestCard(int cardValue) {
 	cardType = Card::Chest;
 }
 
+// No effect on gameplay when chest is first played - used in combo with key
 void ChestCard::play(Game& game, Player& player) {
 	std::cout << "    No immeduate effect. If banked with a key, draw as many bonus cards from the Discard pile as you moved into your Bank.\n";
 }
 
+// When the chest card is being added to the bank, this method is called.
+// Checks if a key card type is also being banked at the same time. If so,
+// the player can draw extra cards from the discard pile, equal to the number of the cards that are being moved into the bank.
+// Drawn cards are added to the player's bank
 void ChestCard::willAddToBank(Game& game, Player& player) {
 	const CardCollection& movingToBank = player.getPlayArea().getCards(); // gets all cards that will be moving to bank
 	bool hasKeyCard = false;

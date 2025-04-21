@@ -7,6 +7,7 @@ MermaidCard::MermaidCard(int cardValue) {
 	cardType = Card::Mermaid;
 }
 
+// Self explanatory. Cards are worth more here
 void MermaidCard::play(Game& game, Player& player) {
 	std::cout << "    No effect but Mermaids are worth more.\n";
 }
