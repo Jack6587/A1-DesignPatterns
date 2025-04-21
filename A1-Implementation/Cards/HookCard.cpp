@@ -37,7 +37,7 @@ void HookCard::play(Game& game, Player& player) {
 	}
 
 	int choice = 0;
-	while (choice < 0 || choice >= cardOptions.size()) {
+	while (choice < 1 || choice > static_cast<int>(cardOptions.size())) {
 		std::cout << "Which card do you pick? ";
 		std::cin >> choice;
 	}

@@ -72,7 +72,7 @@ void Game::endGame() {
 void Game::playRound() {
 	for (int i = 0; i < 2; i++) { // for loop that ensures each player gets a turn (one switch per iteration)
 		std::cout << "--- Round " << currentRound << ", Turn " << currentTurn << " ---" << std::endl;
-		std::cout << currentPlayer->getName() << "'s Turn" << std::endl;
+		std::cout << currentPlayer->getName() << "'s Turn." << std::endl;
 		currentPlayer->printCards(currentPlayer->getBank().getCards(), "Bank");
 
 		bool busted = drawCard(); // draw card returns true if bust and false if not to ensure the player turn ends if a player busts
@@ -141,7 +141,9 @@ bool Game::drawCard() {
 	}
 
 	bool playerBust = currentPlayer->playCard(card, *this); // plays the card immediately
-	currentPlayer->printCards(currentPlayer->getPlayArea().getCards(), "Play Area"); // output play area after card is played
+	if (!playerBust) {
+		currentPlayer->printCards(currentPlayer->getPlayArea().getCards(), "Play Area"); // output play area after card is played
+	}
 	return playerBust; // returns true / false based on what playCard() returns - true if bust, false if no bust
 }
 
