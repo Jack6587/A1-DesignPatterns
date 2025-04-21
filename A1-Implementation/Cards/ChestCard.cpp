@@ -9,7 +9,7 @@ ChestCard::ChestCard(int cardValue) {
 }
 
 void ChestCard::play(Game& game, Player& player) {
-	std::cout << "No immedate effect. If banked with a key, draw as many bonus cards from the Discard pile as you moved into your Bank.\n";
+	std::cout << "    No immedate effect. If banked with a key, draw as many bonus cards from the Discard pile as you moved into your Bank.\n";
 }
 
 void ChestCard::willAddToBank(Game& game, Player& player) {
@@ -32,7 +32,7 @@ void ChestCard::willAddToBank(Game& game, Player& player) {
 				std::cout << card->str();
 			}
 			else {
-				std::cout << "No cards left to draw from the discard pile!\n";
+				std::cout << "    No cards left to draw from the discard pile!\n";
 				break;
 			}
 		}

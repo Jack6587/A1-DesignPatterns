@@ -12,11 +12,11 @@ void OracleCard::play(Game& game, Player& player) {
 	Deck* deck = game.getDeck();
 
 	if (deck->isEmpty()) {
-		std::cout << "No cards in deck...\n";
+		std::cout << "    No cards in deck...\n";
 		return;
 	}
 	Card* topCard = deck->getCards().back();
-	std::cout << "The Oracle see a " << topCard->str() << "\n";
+	std::cout << "    The Oracle see a " << topCard->str() << "\n";
 }
 
 void OracleCard::willAddToBank(Game& game, Player& player) {

@@ -1,6 +1,7 @@
 #include "HookCard.h"
 #include "../Game.h"
 #include <iostream>
+#include <map>
 
 HookCard::HookCard(int cardValue) {
 	name = "Hook";
@@ -10,43 +11,38 @@ HookCard::HookCard(int cardValue) {
 
 void HookCard::play(Game& game, Player& player) {
 	CardCollection& playerBank = player.getBank().getCards();
-	CardCollection highestCards;
+	std::map<Card::CardType, Card*> highestCards;
 
 	for (Card* card : playerBank) {
-		bool replaced = false;
+		Card::CardType type = card->type();
+		int value = card->getValue();
 
-		for (int i = 0; i < highestCards.size(); i++) {
-			if (highestCards[i]->type() == card->type()) {
-				if (card->getValue() > highestCards[i]->getValue()) {
-					highestCards[i] = card;
-				}
-				replaced = true;
-				break;
-			}
-		}
-
-		if (!replaced) {
-			highestCards.push_back(card); // adds a new type of card to highest cards (should only be added if there is no matching type/suit)
+		if(highestCards.find(type) == highestCards.end() || value > highestCards[type]->getValue()){
+			highestCards[type] = card;
 		}
 	}
 
 	if (highestCards.empty()) {
-		std::cout << "No cards in your bank to choose from!" << std::endl;
+		std::cout << "    No cards in your bank to choose from!" << std::endl;
 		return;
 	}
 
+	CardCollection cardOptions;
 	std::cout << "Select a highest-value card from any of the suits in your Bank: " << std::endl;
-	for (int i = 0; i < highestCards.size(); i++) {
-		std::cout << "(" << (i + 1) << ")" << highestCards[i]->str() << std::endl; // outputs each card from highest cards collection (determined by its size)
+	int index = 1;
+	for (auto& pair : highestCards) {
+		std::cout << "(" << (index) << ")" << pair.second->str() << std::endl;
+		cardOptions.push_back(pair.second);
+		index++;
 	}
 
 	int choice = 0;
-	while (choice < 0 || choice >= highestCards.size()) {
+	while (choice < 0 || choice >= cardOptions.size()) {
 		std::cout << "Which card do you pick? ";
 		std::cin >> choice;
 	}
 
-	Card* selectedCard = highestCards[choice - 1]; // get the chosen card based on input (- 1 to account for for loop)
+	Card* selectedCard = cardOptions[choice - 1]; // get the chosen card based on input (- 1 to account for for loop)
 	player.getBank().removeCard(selectedCard); // remove card from player's bank
 	player.playCard(selectedCard, game); // play the card from the player
 }

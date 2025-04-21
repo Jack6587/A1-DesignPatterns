@@ -74,7 +74,7 @@ void Player::printCards(const CardCollection& cards, const std::string& cardArea
 	std::cout << getName() << "'s " << cardArea << ":\n"; // output the area name, such as "Deck"
 
 	for (Card* card : cards) {
-		std::cout << card->str() << "\n"; // outputs each card from the collection
+		std::cout << "    " << card->str() << "\n"; // outputs each card from the collection
 	}
 
 	if (cardArea == "Bank") {

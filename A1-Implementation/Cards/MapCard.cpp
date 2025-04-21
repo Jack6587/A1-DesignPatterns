@@ -9,12 +9,12 @@ MapCard::MapCard(int cardValue) {
 }
 
 void MapCard::play(Game& game, Player& player) {
-	std::cout << "Draw 3 cards from the discard and pick one to add to the play area:\n";
+	std::cout << "    Draw 3 cards from the discard and pick one to add to the play area:\n";
 	CardCollection& discardCards = game.getDiscardPile().getCards();
 	CardCollection drawnCards;
 
 	if (discardCards.size() < 3) {
-		std::cout << "Not enough cards in the discard pile!\n";
+		std::cout << "    Not enough cards in the discard pile!\n";
 		return;
 	}
 

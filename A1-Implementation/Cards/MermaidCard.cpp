@@ -8,7 +8,7 @@ MermaidCard::MermaidCard(int cardValue) {
 }
 
 void MermaidCard::play(Game& game, Player& player) {
-	std::cout << "No effect but Mermaids are worth more.\n";
+	std::cout << "    No effect but Mermaids are worth more.\n";
 }
 
 void MermaidCard::willAddToBank(Game& game, Player& player) {

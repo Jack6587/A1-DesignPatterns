@@ -23,11 +23,11 @@ void CannonCard::play(Game& game, Player& player) {
 	}
 
 	if (highestCards.empty()) { // if opponent has no cards
-		std::cout << "No cards in the opponent's bank!" << std::endl;
+		std::cout << "    No cards in the opponent's bank!" << std::endl;
 		return;
 	}
 
-	std::vector<Card*> cardOptions;
+	CardCollection cardOptions;
 	std::cout << "Shoot the top card of any suit from the other player's Bank into the Discard Pile:" << std::endl;
 	int index = 1;
 	for (auto& pair : highestCards) { // for each pair in the map
@@ -43,7 +43,7 @@ void CannonCard::play(Game& game, Player& player) {
 	}
 
 	Card* selectedCard = cardOptions[choice - 1];
-	std::cout << "You shoot the " << selectedCard->str() << " out of the other player's Bank\n";
+	std::cout << "    You shoot the " << selectedCard->str() << " out of the other player's Bank\n";
 	game.getOpponent()->getBank().removeCard(selectedCard);
 	game.getDiscardPile().addCard(selectedCard);
 }
