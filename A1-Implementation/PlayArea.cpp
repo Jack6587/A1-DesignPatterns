@@ -1,9 +1,10 @@
 #include "PlayArea.h"
+#include "Card.h"
 #include <iostream>
 
 void PlayArea::toString() {
 	for (Card* card : cards) {
-		std::cout << card << std::endl;
+		std::cout << card->str() << std::endl;
 	}
 }
 
@@ -15,6 +16,7 @@ CardCollection& PlayArea::getCards() {
 	return cards;
 }
 
+// clears all cards from the play area - used for player busts of an end of turn
 void PlayArea::clear() {
-	cards.clear();
+	cards.clear(); // empties the vector of cards
 }
