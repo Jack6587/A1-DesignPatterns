@@ -13,17 +13,18 @@ void KrakenCard::play(Game& game, Player& player) {
 	std::cout << "Draw 3 cards from the deck and play each:\n";
 	CardCollection& deckCards = game.getDeck()->getCards();
 
-	if (deckCards.size() < 3) {
-		std::cout << "Not enough cards in the deck!\n";
-		return;
-	}
-
 	for (int i = 0; i < 3; i++) {
-		Card* card = deckCards.back();
-		deckCards.pop_back();
-		player.getPlayArea().addCard(card);
-		std::cout << (i + 1) << card->str() << "\n";
-		player.playCard(card, game);
+		if (deckCards.empty()) {
+			std::cout << "Deck is empty! No more cards to draw" << std::endl;
+			break;
+		}
+
+		std::cout << "(" << (i + 1) << ") ";
+		bool bust = game.drawCard();
+
+		if (bust) {
+			break;
+		}
 	}
 }
 
